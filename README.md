@@ -1,6 +1,9 @@
 # constraint-list-builder
 This library currently doesn't work. Do not use.
 
+# Tests
+npm test
+
 # Defining your contraints
 Example of constraint structure
 ```javascript
@@ -43,3 +46,5 @@ In the above example if you've added `node1` to the list you can only add `node2
 
 # Huge thanks to:
 tsmean - for their excellent article https://www.tsmean.com/articles/how-to-write-a-typescript-library/
+
+https://journal.artfuldev.com - for their article on setting up unit tests https://journal.artfuldev.com/unit-testing-node-applications-with-typescript-using-mocha-and-chai-384ef05f32b2

@@ -1,15 +1,15 @@
 export namespace ListBuilder {
     
     export function registerNodes() {
-        console.log('registering nodes');
+       return 'registering nodes';
     }
     
     export function addNode() {
-        console.log('addingNode');
+        return 'addingNode';
     }
 
     export function getList() {
-        console.log('getting list');
+        return 'getting list';
     }
 
   }
