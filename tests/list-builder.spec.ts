@@ -4,9 +4,9 @@ import 'mocha';
 
 describe('registerNodes function', () => {
 
-    it('should return registering nodes', () => {
-      const result = ListBuilder.registerNodes();
-      expect(result).to.equal('registering nodes');
+    it('should return setting definition', () => {
+      const result = ListBuilder.setDefinition();
+      expect(result).to.equal('setting definition');
     });
   
   });
