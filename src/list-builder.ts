@@ -1,7 +1,19 @@
 export namespace ListBuilder {
     
-    export function setDefinition() {
-       return 'setting definition';
+    let definition = [];
+    /**
+     * Sets the definition, checks that each node has an ID property.
+     * @param {Array} def - the array of nodes to be set as the definition
+     * @returns {Boolean} - returns false if one of the nodes doesn't have an id property
+     */
+    export function setDefinition(def: Array<object>): Boolean {
+        def.forEach(element => {
+            if(!element.hasOwnProperty('id')) {
+                return false;
+            }
+        });
+        definition = def;
+        return true;
     }
     
     /**
