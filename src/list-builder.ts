@@ -7,13 +7,9 @@ export namespace ListBuilder {
      * @returns {Boolean} - returns false if one of the nodes doesn't have an id property
      */
     export function setDefinition(def: Array<object>): Boolean {
-        def.forEach(element => {
-            if(!element.hasOwnProperty('id')) {
-                return false;
-            }
-        });
-        definition = def;
-        return true;
+        let invalid = def.some(element => !element.hasOwnProperty('id'));
+        invalid ? this.definition = [] : definition = def;
+        return !invalid;
     }
     
     /**
