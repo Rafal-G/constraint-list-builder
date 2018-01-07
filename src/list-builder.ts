@@ -1,6 +1,7 @@
 export namespace ListBuilder {
     
     let definition = [];
+    let list = [];
     /**
      * Sets the definition, checks that each node has an ID property.
      * @param {Array} def - the array of nodes to be set as the definition
@@ -14,10 +15,26 @@ export namespace ListBuilder {
     
     /**
      * Adds a node to the list
-     * @param {any} node - The node to be added
+     * @param {object} node - The node to be added
      * @returns {Boolean} - true if the node has been added, false if the node hasn't been added
      */
-    export function addNode(node: any): Boolean {
+    export function addNode(node: object): Boolean {
+        if(node.hasOwnProperty('id')) {
+            let last = list[list.length - 1];
+            if(typeof last !== 'undefined' ) {
+                let allowed = last.allowedNodes.some(element => element === node['id']);
+                if(allowed) {
+                    list.push(node);
+                    return true;
+                } else {
+                    return false;
+                }
+
+            } else {
+                list.push(node);
+                return true;
+            }
+        }
         return false;
     }
 
