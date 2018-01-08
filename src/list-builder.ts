@@ -1,5 +1,4 @@
 export namespace ListBuilder {
-    
     let definition = [];
     let list = [];
     /**
@@ -9,8 +8,16 @@ export namespace ListBuilder {
      */
     export function setDefinition(def: Array<object>): Boolean {
         let invalid = def.some(element => !element.hasOwnProperty('id'));
-        invalid ? this.definition = [] : definition = def;
+        invalid ? this.definition = [] : this.definition = def;
         return !invalid;
+    }
+
+    export function getDefinition() {
+        return this.definition;
+    }
+    
+    export function resetDefinition() {
+        this.definition = [];
     }
     
     /**

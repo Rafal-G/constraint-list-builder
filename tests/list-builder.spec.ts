@@ -5,15 +5,26 @@ import { expect } from 'chai';
 import 'mocha';
 
 describe('registerNodes function', () => {
+    beforeEach(() => {
+      ListBuilder.resetDefinition();
+    });
 
     it('should return true with correct definition', () => {
+      expect(ListBuilder.getDefinition()).to.have.lengthOf(0);      
+      
       const result = ListBuilder.setDefinition(correctDef);
       expect(result).to.equal(true);
-    });
-  
-    it('should return false with and incorrect definition', () => {
-      const result = ListBuilder.setDefinition(incorrectDef);
-      expect(result).to.equal(false);
+      expect(ListBuilder.getDefinition()).to.equal(correctDef);
     });
 
-  });
+    it('should return false with and incorrect definition', () => {
+      expect(ListBuilder.getDefinition()).to.have.lengthOf(0);
+
+      const result = ListBuilder.setDefinition(incorrectDef);
+      expect(result).to.equal(false);
+      expect(ListBuilder.getDefinition()).to.have.lengthOf(0);
+    });
+
+
+
+});
