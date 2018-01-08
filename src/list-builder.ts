@@ -26,17 +26,19 @@ export namespace ListBuilder {
      * @returns {Boolean} - true if the node has been added, false if the node hasn't been added
      */
     export function addNode(node: object): Boolean {
+        //Should we care if the definition array is empty before we add
         if(node.hasOwnProperty('id')) {
             let last = list[list.length - 1];
             if(typeof last !== 'undefined' ) {
-                let allowed = last.allowedNodes.some(element => element === node['id']);
+                let defElement = this.defintion.find((ele) => ele.id === last.id);
+                let allowed = defElement.allowedNodes.some(element => element === node['id']);
+
                 if(allowed) {
                     list.push(node);
                     return true;
                 } else {
                     return false;
                 }
-
             } else {
                 list.push(node);
                 return true;
