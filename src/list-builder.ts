@@ -1,4 +1,5 @@
 export namespace ListBuilder {
+
     let definition = [];
     let list = [];
     /**
@@ -28,31 +29,34 @@ export namespace ListBuilder {
     export function addNode(node: object): Boolean {
         //Should we care if the definition array is empty before we add
         if(node.hasOwnProperty('id')) {
-            let last = list[list.length - 1];
+            let last = this.list[this.list.length - 1];
             if(typeof last !== 'undefined' ) {
-                let defElement = this.defintion.find((ele) => ele.id === last.id);
-                let allowed = defElement.allowedNodes.some(element => element === node['id']);
-
+                let defintionEle = this.definition.find((ele) => ele.id === last.id);
+                let allowed = defintionEle.allowedNodes.some(element => element === node['id']);
                 if(allowed) {
-                    list.push(node);
+                    this.list.push(node);
                     return true;
                 } else {
                     return false;
                 }
             } else {
-                list.push(node);
+                this.list.push(node);
                 return true;
             }
         }
         return false;
     }
 
+    export function getList(): any[] {
+        return this.list;
+    }
+
+    export function resetList() {
+        this.list = [];
+    }
+
     export function removeLastNode() {
         return 'remove last node'
     }
 
-    export function getList() {
-        return 'getting list';
-    }
-
-  }
+}
