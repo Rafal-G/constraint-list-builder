@@ -1,5 +1,8 @@
 # constraint-list-builder
-This library currently doesn't work. Do not use.
+Core functionality is done.
+
+Need to convert so that someone can construct this as an object.
+Need to still do a writeup on what this is for.
 
 # Tests
 npm test
