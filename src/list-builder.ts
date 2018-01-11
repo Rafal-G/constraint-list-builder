@@ -56,7 +56,7 @@ export namespace ListBuilder {
     }
 
     export function removeLastNode() {
-        return 'remove last node'
+        this.list.pop();
     }
 
 }
