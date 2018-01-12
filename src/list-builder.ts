@@ -1,7 +1,7 @@
 export class ListBuilder {
 
-    definition: Array<object>;
-    list: Array<object>;
+    definition: Array<any>;
+    list: Array<any>;
 
     constructor(def?: Array<object>) {
         this.definition = [];
