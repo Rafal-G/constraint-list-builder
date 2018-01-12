@@ -1,23 +1,32 @@
-export namespace ListBuilder {
+export class ListBuilder {
 
-    let definition = [];
-    let list = [];
+    definition: Array<object>;
+    list: Array<object>;
+
+    constructor(def?: Array<object>) {
+        this.definition = [];
+        this.list = [];
+        
+        if(def) {
+            this.setDefinition(def);
+        }
+    }
     /**
      * Sets the definition, checks that each node has an ID property.
      * @param {Array} def - the array of nodes to be set as the definition
      * @returns {Boolean} - returns false if one of the nodes doesn't have an id property
      */
-    export function setDefinition(def: Array<object>): Boolean {
+    setDefinition(def: Array<object>): Boolean {
         let invalid = def.some(element => !element.hasOwnProperty('id'));
         invalid ? this.definition = [] : this.definition = def;
         return !invalid;
     }
 
-    export function getDefinition() {
+    getDefinition() {
         return this.definition;
     }
     
-    export function resetDefinition() {
+    resetDefinition() {
         this.definition = [];
     }
     
@@ -26,7 +35,7 @@ export namespace ListBuilder {
      * @param {object} node - The node to be added
      * @returns {Boolean} - true if the node has been added, false if the node hasn't been added
      */
-    export function addNode(node: object): Boolean {
+    addNode(node: object): Boolean {
         //Should we care if the definition array is empty before we add
         if(node.hasOwnProperty('id')) {
             let last = this.list[this.list.length - 1];
@@ -47,15 +56,15 @@ export namespace ListBuilder {
         return false;
     }
 
-    export function getList(): any[] {
+    getList(): any[] {
         return this.list;
     }
 
-    export function resetList() {
+    resetList() {
         this.list = [];
     }
 
-    export function removeLastNode() {
+    removeLastNode() {
         this.list.pop();
     }
 
