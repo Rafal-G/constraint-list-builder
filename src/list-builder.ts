@@ -11,6 +11,7 @@ export class ListBuilder {
             this.setDefinition(def);
         }
     }
+    
     /**
      * Sets the definition, checks that each node has an ID property.
      * @param {Array} def - the array of nodes to be set as the definition
@@ -20,21 +21,6 @@ export class ListBuilder {
         let invalid = def.some(element => !element.hasOwnProperty('id'));
         invalid ? this.definition = [] : this.definition = def;
         return !invalid;
-    }
-
-    /**
-     * Returns the set defintion.
-     * @returns {Array<any>} - returns the set defintion array. Empty array if none set.
-     */
-    getDefinition(): Array<any> {
-        return this.definition;
-    }
-    
-    /**
-     * Resets definition to empty array.
-     */
-    resetDefinition() {
-        this.definition = [];
     }
     
     /**
@@ -64,6 +50,13 @@ export class ListBuilder {
     }
 
     /**
+     * Removes the last node.
+     */
+    removeLastNode() {
+        this.list.pop();
+    }
+
+    /**
      * Returns the set list.
      * @returns {any[]} - The list of objects you have created.
      */
@@ -79,10 +72,18 @@ export class ListBuilder {
     }
 
     /**
-     * Removes the last node.
+     * Returns the set defintion.
+     * @returns {Array<any>} - returns the set defintion array. Empty array if none set.
      */
-    removeLastNode() {
-        this.list.pop();
+    getDefinition(): Array<any> {
+        return this.definition;
+    }
+    
+    /**
+     * Resets definition to empty array.
+     */
+    resetDefinition() {
+        this.definition = [];
     }
 
 }
