@@ -22,10 +22,17 @@ export class ListBuilder {
         return !invalid;
     }
 
-    getDefinition() {
+    /**
+     * Returns the set defintion.
+     * @returns {Array<any>} - returns the set defintion array. Empty array if none set.
+     */
+    getDefinition(): Array<any> {
         return this.definition;
     }
     
+    /**
+     * Resets definition to empty array.
+     */
     resetDefinition() {
         this.definition = [];
     }
@@ -56,14 +63,24 @@ export class ListBuilder {
         return false;
     }
 
+    /**
+     * Returns the set list.
+     * @returns {any[]} - The list of objects you have created.
+     */
     getList(): any[] {
         return this.list;
     }
 
+    /**
+     * Resets list to empty array.
+     */
     resetList() {
         this.list = [];
     }
 
+    /**
+     * Removes the last node.
+     */
     removeLastNode() {
         this.list.pop();
     }
