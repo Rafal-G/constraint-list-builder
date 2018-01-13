@@ -1,8 +1,10 @@
 # constraint-list-builder
 Core functionality is done.
 
-Need to convert so that someone can construct this as an object.
-Need to still do a writeup on what this is for.
+# Todo
+- Need to still do a writeup on what this is for.
+- More unit test.
+- Sample code on how to use.
 
 # Tests
 npm test
