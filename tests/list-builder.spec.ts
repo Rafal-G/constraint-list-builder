@@ -26,6 +26,19 @@ describe('registerNodes function', () => {
       expect(listBuilder.getDefinition()).to.have.lengthOf(0);
     });
 
+    it('should throw an exception when node without id is being added', () => {
+      expect(listBuilder.getDefinition()).to.have.lengthOf(0);
+      
+      const result = listBuilder.setDefinition(correctDef);
+      expect(result).to.equal(true);
+
+      //Have put method in anon function for it to execute.
+      expect(() => {
+        listBuilder.addNode({'test': 'testVal'})
+      }).to.throw('The node that\'s being added has no id field');
+
+    });
+
     it('should add node successfully when list is empty', () => {
       expect(listBuilder.getDefinition()).to.have.lengthOf(0);
       
