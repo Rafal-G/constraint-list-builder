@@ -1,3 +1,5 @@
+import { InvalidNodeError } from './invalid-node-error';
+
 export class ListBuilder {
 
     definition: Array<any>;
@@ -27,6 +29,7 @@ export class ListBuilder {
      * Adds a node to the list
      * @param {object} node - The node to be added
      * @returns {Boolean} - true if the node has been added, false if the node hasn't been added
+     * @throws {InvalidNodeError} - if the node that's trying to be added has no id field
      */
     addNode(node: object): Boolean {
         //Should we care if the definition array is empty before we add
@@ -45,8 +48,9 @@ export class ListBuilder {
                 this.list.push(node);
                 return true;
             }
+        } else {
+            throw new InvalidNodeError('The node that\'s being added has no id field');
         }
-        return false;
     }
 
     /**
