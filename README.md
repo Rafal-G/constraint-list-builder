@@ -61,4 +61,3 @@ https://journal.artfuldev.com - for their article on setting up unit tests https
 - Need to still do a writeup on what this is for.
 - More unit test.
 - Sample code on how to use.
-- Return errors instead of try and false.
