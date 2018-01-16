@@ -24,14 +24,27 @@ export class ListBuilder {
         invalid ? this.definition = [] : this.definition = def;
         return !invalid;
     }
+
+    /**
+     * Adds a node to the list doesn't throw any exception, only returns true or false.
+     * @param {object} node - The node to be added
+     * @returns {Boolean} - true if the node has been added, false if the node hasn't been added
+     */
+    addFast(node: object): Boolean {
+        return this.add(node, false);
+    }
     
     /**
-     * Adds a node to the list
+     * Adds a node to the list, this throws an error when an invalid node is added.
      * @param {object} node - The node to be added
      * @returns {Boolean} - true if the node has been added, false if the node hasn't been added
      * @throws {InvalidNodeError} - if the node that's trying to be added has no id field
      */
     addNode(node: object): Boolean {
+        return this.add(node, true);
+    }
+
+    private add(node:object, throwError: boolean): Boolean {
         //Should we care if the definition array is empty before we add
         if(node.hasOwnProperty('id')) {
             let last = this.list[this.list.length - 1];
@@ -49,9 +62,14 @@ export class ListBuilder {
                 return true;
             }
         } else {
-            throw new InvalidNodeError('The node that\'s being added has no id field');
+            if(throwException) {
+                throw new InvalidNodeError('The node that\'s being added has no id field');
+            } else {
+                return false;
+            }
         }
     }
+
 
     /**
      * Removes the last node.
