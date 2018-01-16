@@ -62,7 +62,7 @@ export class ListBuilder {
                 return true;
             }
         } else {
-            if(throwException) {
+            if(throwError) {
                 throw new InvalidNodeError('The node that\'s being added has no id field');
             } else {
                 return false;
