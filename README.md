@@ -60,5 +60,5 @@ https://journal.artfuldev.com - for their article on setting up unit tests https
 # Todo
 - Need to still do a writeup on what this is for.
 - More unit test.
-- Sample code on how to use.
+- Make example better.
 - FIX BUG WHERE if first node being added doesn't have a correct id.
