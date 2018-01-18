@@ -7,7 +7,10 @@ You provide a defintion file when you initialize the object (or later), in the d
 `npm i constraint-list-builder --save`
 
 # How to use
-//TODO
+I wrote an example project on how to use the library.
+
+https://github.com/Rafal-G/constraint-list-builder-example
+
 
 # Defining your contraints
 Example of constraint structure
@@ -58,7 +61,6 @@ tsmean - for their excellent article https://www.tsmean.com/articles/how-to-writ
 https://journal.artfuldev.com - for their article on setting up unit tests https://journal.artfuldev.com/unit-testing-node-applications-with-typescript-using-mocha-and-chai-384ef05f32b2
 
 # Todo
-- Need to still do a writeup on what this is for.
+- Need to do a writeup on what this is for.
 - More unit test.
-- Make example better.
 - FIX BUG WHERE if first node being added doesn't have a correct id.
