@@ -18,6 +18,18 @@ describe('registerNodes function', () => {
       expect(listBuilder.getDefinition()).to.equal(correctDef);
     });
 
+
+    it('should reset the definition', () => {
+      expect(listBuilder.getDefinition()).to.have.lengthOf(0);      
+      
+      const result = listBuilder.setDefinition(correctDef);
+      expect(result).to.equal(true);
+      expect(listBuilder.getDefinition()).to.equal(correctDef);
+      listBuilder.resetDefinition();
+      expect(listBuilder.getDefinition()).to.have.lengthOf(0);      
+
+    });
+
     it('should return false with and incorrect definition', () => {
       expect(listBuilder.getDefinition()).to.have.lengthOf(0);
 

@@ -70,7 +70,6 @@ export class ListBuilder {
         }
     }
 
-
     /**
      * Removes the last node.
      */
