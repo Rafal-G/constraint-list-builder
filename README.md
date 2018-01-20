@@ -3,14 +3,16 @@ This project allows you to build a list but based on constraints that you set up
 
 You provide a defintion file when you initialize the object (or later), in the defintion file you set up a list of constraints. When you try adding a node to the list the constraints are checked to see if the node is allowed.
 
-# Installation
-`npm i constraint-list-builder --save`
-
 # How to use
 I wrote an example project on how to use the library.
 
 https://github.com/Rafal-G/constraint-list-builder-example
 
+# Installation
+`npm i constraint-list-builder --save`
+
+# Tests
+`npm test`
 
 # Defining your contraints
 Example of constraint structure
@@ -52,15 +54,11 @@ allowedNodes - array of ids of the nodes that are allowed to be added after the 
 
 In the above example if you've added `node1` to the list you can only add `node2` or `node3`. `node4` cannot be added. Since `node4` does not allow any nodes to be added if `node4` is ever added to the list, no other nodes can be added after it.
 
-# Tests
-`npm test`
-
 # Huge thanks to:
 tsmean - for their excellent article https://www.tsmean.com/articles/how-to-write-a-typescript-library/
 
 https://journal.artfuldev.com - for their article on setting up unit tests https://journal.artfuldev.com/unit-testing-node-applications-with-typescript-using-mocha-and-chai-384ef05f32b2
 
 # Todo
-- Need to do a writeup on what this is for.
 - More unit test.
 - FIX BUG WHERE if first node being added doesn't have a correct id.
