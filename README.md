@@ -61,4 +61,4 @@ https://journal.artfuldev.com - for their article on setting up unit tests https
 
 # Todo
 - More unit test.
-- FIX BUG WHERE if first node being added doesn't have a correct id.
+- update `Defining your contraints`, remove name.
