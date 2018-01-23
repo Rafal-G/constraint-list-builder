@@ -20,25 +20,21 @@ Example of constraint structure
 [
     {
         "id": "node1",
-        "name": "optionalName1",
         "allowedNodes": ["node2", "node3"]
         //other custom properties
     },
     {
         "id": "node2",
-        "name": "optionalName2",
         "allowedNodes": ["node1"]
         //other custom properties
     },
     {
         "id": "node3",
-        "name": "optionalName3",
         "allowedNodes": ["node4"]
         //other custom properties
     },
     {
         "id": "node4",
-        "name": "optionalName4",
         "allowedNodes": []
         //other custom properties
     }
@@ -47,8 +43,6 @@ Example of constraint structure
 ```
 ## Fields explained
 id - id of the node
-
-name - optional field for name of node
 
 allowedNodes - array of ids of the nodes that are allowed to be added after the current node. 
 
