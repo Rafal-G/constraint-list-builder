@@ -44,7 +44,7 @@ export class ListBuilder {
         return this.add(node, true);
     }
 
-    private add(node:object, throwError: boolean): Boolean {
+    private add(node: any, throwError: boolean): Boolean {
         //Should we care if the definition array is empty before we add
         if(node.hasOwnProperty('id')) {
             let last = this.list[this.list.length - 1];
@@ -58,8 +58,16 @@ export class ListBuilder {
                     return false;
                 }
             } else {
-                this.list.push(node);
-                return true;
+                let definitionExists = this.definition.find(e => e.id === node.id)
+                if(definitionExists) {
+                    this.list.push(node);
+                    return true;
+                }
+                if(throwError) {
+                    throw new InvalidNodeError('The node that\'s being added doesn\'t have any matching definition');
+                } else {
+                    return false;
+                }
             }
         } else {
             if(throwError) {
