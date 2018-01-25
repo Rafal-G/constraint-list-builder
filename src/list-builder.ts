@@ -46,6 +46,7 @@ export class ListBuilder {
 
     private add(node: any, throwError: boolean): Boolean {
         //Should we care if the definition array is empty before we add
+        //TODO see if I can simplify this function. Nested if's are ugly
         if(node.hasOwnProperty('id')) {
             let last = this.list[this.list.length - 1];
             //Is there an item in the array?
@@ -61,7 +62,6 @@ export class ListBuilder {
 
             //No item in the array. See if definition exists for the node and add it
             } else {
-
                 let definitionExists = this.definition.find(e => e.id === node.id)
                 if(definitionExists) {
                     this.list.push(node);
@@ -69,8 +69,6 @@ export class ListBuilder {
                 } else {
                     return this._handleRejection('The node that\'s being added doesn\'t have any matching definition', throwError);
                 }
-
-                
             }
         } else {
             return this._handleRejection('The node that\'s being added has no id field', throwError)
