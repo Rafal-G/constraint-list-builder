@@ -48,33 +48,32 @@ export class ListBuilder {
         //Should we care if the definition array is empty before we add
         if(node.hasOwnProperty('id')) {
             let last = this.list[this.list.length - 1];
-            if(typeof last !== 'undefined' ) {
+            //Is there an item in the array?
+            if(typeof last !== 'undefined') {
+
                 let defintionEle = this.definition.find((ele) => ele.id === last.id);
                 let allowed = defintionEle.allowedNodes.some(element => element === node['id']);
                 if(allowed) {
                     this.list.push(node);
                     return true;
-                } else {
-                    return false;
                 }
+                return false;
+
+            //No item in the array. See if definition exists for the node and add it
             } else {
+
                 let definitionExists = this.definition.find(e => e.id === node.id)
                 if(definitionExists) {
                     this.list.push(node);
                     return true;
-                }
-                if(throwError) {
-                    throw new InvalidNodeError('The node that\'s being added doesn\'t have any matching definition');
                 } else {
-                    return false;
+                    return this._handleRejection('The node that\'s being added doesn\'t have any matching definition', throwError);
                 }
+
+                
             }
         } else {
-            if(throwError) {
-                throw new InvalidNodeError('The node that\'s being added has no id field');
-            } else {
-                return false;
-            }
+            return this._handleRejection('The node that\'s being added has no id field', throwError)
         }
     }
 
@@ -113,6 +112,14 @@ export class ListBuilder {
      */
     resetDefinition() {
         this.definition = [];
+    }
+
+    _handleRejection(msg, throwError) {
+        if(throwError) {
+            throw new InvalidNodeError(msg);
+        } else {
+            return false;
+        }
     }
 
 }
