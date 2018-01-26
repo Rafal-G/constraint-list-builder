@@ -46,32 +46,31 @@ export class ListBuilder {
 
     private add(node: any, throwError: boolean): Boolean {
         //Should we care if the definition array is empty before we add
-        //TODO see if I can simplify this function. Nested if's are ugly
-        if(node.hasOwnProperty('id')) {
-            let last = this.list[this.list.length - 1];
-            //Is there an item in the array?
-            if(typeof last !== 'undefined') {
-
-                let defintionEle = this.definition.find((ele) => ele.id === last.id);
-                let allowed = defintionEle.allowedNodes.some(element => element === node['id']);
-                if(allowed) {
-                    this.list.push(node);
-                    return true;
-                }
-                return false;
-
-            //No item in the array. See if definition exists for the node and add it
-            } else {
-                let definitionExists = this.definition.find(e => e.id === node.id)
-                if(definitionExists) {
-                    this.list.push(node);
-                    return true;
-                } else {
-                    return this._handleRejection('The node that\'s being added doesn\'t have any matching definition', throwError);
-                }
-            }
-        } else {
+        if(!node.hasOwnProperty('id')) {
             return this._handleRejection('The node that\'s being added has no id field', throwError)
+        }
+
+        let last = this.list[this.list.length - 1];
+        //Is there an item in the array?
+        if(typeof last !== 'undefined') {
+
+            let defintionEle = this.definition.find((ele) => ele.id === last.id);
+            let allowed = defintionEle.allowedNodes.some(element => element === node['id']);
+            if(allowed) {
+                this.list.push(node);
+                return true;
+            }
+            return false;
+
+        //No item in the array. See if definition exists for the node and add it
+        } else {
+            let definitionExists = this.definition.find(e => e.id === node.id)
+            if(definitionExists) {
+                this.list.push(node);
+                return true;
+            } else {
+                return this._handleRejection('The node that\'s being added doesn\'t have any matching definition', throwError);
+            }
         }
     }
 
