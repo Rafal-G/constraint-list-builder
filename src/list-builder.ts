@@ -45,7 +45,11 @@ export class ListBuilder {
     }
 
     private add(node: any, throwError: boolean): Boolean {
-        //Should we care if the definition array is empty before we add
+
+        if(this.getDefinition().length <= 0) {
+            return this._handleRejection('There is no defintion set. Cannot add node until a defintion has been set', throwError)
+        }
+
         if(!node.hasOwnProperty('id')) {
             return this._handleRejection('The node that\'s being added has no id field', throwError)
         }
@@ -53,9 +57,9 @@ export class ListBuilder {
         let last = this.list[this.list.length - 1];
         //Is there an item in the array?
         if(typeof last !== 'undefined') {
-
             let defintionEle = this.definition.find((ele) => ele.id === last.id);
             let allowed = defintionEle.allowedNodes.some(element => element === node['id']);
+
             if(allowed) {
                 this.list.push(node);
                 return true;
