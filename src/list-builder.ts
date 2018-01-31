@@ -47,7 +47,7 @@ export class ListBuilder {
     private add(node: any, throwError: boolean): Boolean {
 
         if(this.getDefinition().length <= 0) {
-            return this._handleRejection('There is no defintion set. Cannot add node until a defintion has been set', throwError)
+            return this._handleRejection('There is no definition set. Cannot add node until a definition has been set', throwError)
         }
 
         if(!node.hasOwnProperty('id')) {

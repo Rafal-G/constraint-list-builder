@@ -38,7 +38,15 @@ describe('registerNodes function', () => {
       expect(listBuilder.getDefinition()).to.have.lengthOf(0);
     });
 
-    it('should throw an exception when node without id is being added', () => {
+    it('should throw an error when node is added without definition', () => {
+      expect(listBuilder.getDefinition()).to.have.lengthOf(0);
+      
+      expect(() => {
+        listBuilder.addNode({'test': 'testVal'})
+      }).to.throw('There is no definition set. Cannot add node until a definition has been set');
+    });
+
+    it('should throw an error when node without id is being added', () => {
       expect(listBuilder.getDefinition()).to.have.lengthOf(0);
       
       const result = listBuilder.setDefinition(correctDef);
