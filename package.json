@@ -1,6 +1,6 @@
 {
   "name": "constraint-list-builder",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Used to build a list of nodes, each node defines it's constraints in a configuration file. The list of nodes has to be built using the configuration file.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
