@@ -1,11 +1,12 @@
 import { InvalidNodeError } from './invalid-node-error';
+import { Definition } from './interfaces/i.definition';
 
 export class ListBuilder {
 
     definition: Array<any>;
     list: Array<any>;
 
-    constructor(def?: Array<object>) {
+    constructor(def?: Array<Definition>) {
         this.definition = [];
         this.list = [];
         
@@ -19,7 +20,7 @@ export class ListBuilder {
      * @param {Array} def - the array of nodes to be set as the definition
      * @returns {Boolean} - returns false if one of the nodes doesn't have an id property
      */
-    setDefinition(def: Array<object>): Boolean {
+    setDefinition(def: Array<Definition>): Boolean {
         let invalid = def.some(element => !element.hasOwnProperty('id'));
         invalid ? this.definition = [] : this.definition = def;
         return !invalid;
@@ -123,4 +124,4 @@ export class ListBuilder {
         }
     }
 
-}
+}   
